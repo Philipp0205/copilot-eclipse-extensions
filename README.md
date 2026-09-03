@@ -31,7 +31,9 @@ If Copilot prompts you to approve MCP servers from a contributing plugin, approv
 
 ## Build
 
-Prerequisites: Java 17+, Maven 3.8+ (or the included `./mvnw`).
+Prerequisites: Java 21+, Maven 3.8+ (or the included `./mvnw`).
+
+Java 21 is required because the current GitHub Copilot for Eclipse feature pulls in bundles that declare a `JavaSE-21` execution environment.
 
 ```shell
 ./mvnw clean verify
