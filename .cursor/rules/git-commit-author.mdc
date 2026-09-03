@@ -1,0 +1,31 @@
+---
+description: Git commits use Philipp0205 as author and never add Cursor as a co-author
+alwaysApply: true
+---
+
+# Git commit author
+
+When creating git commits:
+
+- Set the commit **author** (and committer, if you control it) to GitHub user **Philipp0205**, not Cursor.
+- Use name `Philipp K.` and email `36603238+Philipp0205@users.noreply.github.com` unless the repo already has a matching `user.name` / `user.email` for Philipp0205.
+- If the environment is configured as `Cursor Agent` / `cursoragent@cursor.com`, override it for the commit, for example:
+
+```bash
+git -c user.name="Philipp K." -c user.email="36603238+Philipp0205@users.noreply.github.com" commit -m "..."
+```
+
+- Do **not** add Cursor as a co-author. Do not include trailers such as:
+  - `Co-authored-by: Cursor <cursoragent@cursor.com>`
+  - `Co-authored-by: Cursor Agent`
+  - any other Cursor / cursoragent co-author line
+- Do not add "Made with Cursor" or similar attribution in the commit message.
+
+```
+# BAD
+Co-authored-by: Cursor <cursoragent@cursor.com>
+
+# GOOD
+Author: Philipp K. <36603238+Philipp0205@users.noreply.github.com>
+(no Cursor co-author trailer)
+```
