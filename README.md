@@ -41,7 +41,7 @@ If Copilot prompts you to approve MCP servers from a contributing plugin, approv
 
 ## Build
 
-Prerequisites: Java 17+, Maven 3.8+ (or the included `./mvnw`).
+Prerequisites: Java 21+, Maven 3.8+ (or the included `./mvnw`).
 
 ```shell
 ./mvnw clean verify
