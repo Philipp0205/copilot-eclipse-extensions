@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="copilot.eclipse.extensions.feature"
+      label="Copilot Extensions"
+      version="1.0.0.qualifier"
+      provider-name="Copilot for Eclipse contributors">
+
+   <description>
+      Companion plugin that contributes extra MCP servers to GitHub Copilot for Eclipse.
+      Install this alongside the official GitHub Copilot feature. It is intentionally
+      separate so extra integrations do not have to land in the official plugin.
+   </description>
+
+   <copyright>
+      Copilot for Eclipse contributors
+   </copyright>
+
+   <license url="https://opensource.org/licenses/MIT">
+      MIT License
+   </license>
+
+   <requires>
+      <import plugin="com.microsoft.copilot.eclipse.ui" version="0.19.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="copilot.eclipse.extensions"
+         version="0.0.0"/>
+
+</feature>

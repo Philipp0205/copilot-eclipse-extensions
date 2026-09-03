@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="copilot.eclipse.extensions.feature" version="1.0.0.qualifier">
+      <category name="copilot.eclipse.extensions.category"/>
+   </feature>
+   <category-def name="copilot.eclipse.extensions.category" label="Copilot Extensions"/>
+</site>
