@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Copilot Extensions Tests
+Bundle-SymbolicName: copilot.eclipse.extensions.test;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Copilot for Eclipse contributors
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Fragment-Host: copilot.eclipse.extensions
+Automatic-Module-Name: copilot.eclipse.extensions.test
+Require-Bundle: junit-jupiter-api;bundle-version="5.10.1",
+ com.google.gson;bundle-version="2.10.1"
