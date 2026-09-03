@@ -1,0 +1,5 @@
+{
+  "name": "Copilot Extensions for Eclipse",
+  "user": "ubuntu",
+  "install": "./mvnw clean verify --batch-mode"
+}
