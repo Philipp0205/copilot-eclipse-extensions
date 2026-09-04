@@ -59,6 +59,9 @@ public final class CopilotSessions {
       TOPIC_NEW_CONVERSATION,
       "com/microsoft/copilot/eclipse/CHAT/ON_SEND",
       "com/microsoft/copilot/eclipse/CHAT/MESSAGE_SEND",
+      // Fires once Copilot has finished starting up and knows the sign-in state, which is when
+      // sessions become readable at all.
+      "com/microsoft/copilot/eclipse/AUTH/STATUS_CHANGED",
   };
 
   private CopilotSessions() {

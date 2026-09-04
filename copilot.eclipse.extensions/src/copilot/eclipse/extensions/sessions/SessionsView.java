@@ -303,9 +303,12 @@ public class SessionsView extends ViewPart {
 
   @Override
   public void setFocus() {
-    if (viewer != null && !viewer.getTable().isDisposed()) {
-      viewer.getTable().setFocus();
+    if (isDisposed()) {
+      return;
     }
+    // Activity labels age and Copilot may have been used elsewhere, so re-read on activation.
+    refresh();
+    viewer.getTable().setFocus();
   }
 
   @Override
