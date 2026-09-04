@@ -6,9 +6,10 @@
       provider-name="Copilot for Eclipse contributors">
 
    <description>
-      Companion plugin that contributes extra MCP servers to GitHub Copilot for Eclipse.
-      Install this alongside the official GitHub Copilot feature. It is intentionally
-      separate so extra integrations do not have to land in the official plugin.
+      Companion plugin that adds multiple chat sessions and extra MCP servers to GitHub
+      Copilot for Eclipse. Install this alongside the official GitHub Copilot feature. It
+      is intentionally separate so extra integrations do not have to land in the official
+      plugin.
    </description>
 
    <copyright>

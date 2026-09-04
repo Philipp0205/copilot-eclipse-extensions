@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <description name="Copilot Extensions for Eclipse" url="https://philipp0205.github.io/copilot-eclipse-extensions/">
-      Companion Eclipse update site for extra MCP integrations with GitHub Copilot.
+      Companion Eclipse update site adding multiple chat sessions and extra MCP
+      integrations to GitHub Copilot.
    </description>
    <feature url="features/copilot.eclipse.extensions.feature_1.0.0.qualifier.jar" id="copilot.eclipse.extensions.feature" version="1.0.0.qualifier">
       <category name="copilot.eclipse.extensions.category"/>
    </feature>
    <category-def name="copilot.eclipse.extensions.category" label="Copilot Extensions">
       <description>
-         Extra MCP integrations for GitHub Copilot for Eclipse.
+         Multiple chat sessions and extra MCP integrations for GitHub Copilot for Eclipse.
       </description>
    </category-def>
 </site>
