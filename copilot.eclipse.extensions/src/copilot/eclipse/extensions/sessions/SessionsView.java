@@ -41,6 +41,9 @@ public class SessionsView extends ViewPart {
 
   public static final String VIEW_ID = "copilot.eclipse.extensions.views.SessionsView";
 
+  /** Copilot switches conversations asynchronously; this is how long to wait before re-reading. */
+  private static final int RECONCILE_DELAY_MS = 600;
+
   private TableViewer viewer;
   private Label statusLabel;
   private Display display;
@@ -199,10 +202,16 @@ public class SessionsView extends ViewPart {
       return;
     }
     display.asyncExec(() -> {
-      if (!isDisposed()) {
-        refresh();
-      }
+      refreshIfAlive();
+      // Copilot applies the change after these events fire, so take a second look shortly after.
+      display.timerExec(RECONCILE_DELAY_MS, this::refreshIfAlive);
     });
+  }
+
+  private void refreshIfAlive() {
+    if (!isDisposed()) {
+      refresh();
+    }
   }
 
   private boolean isDisposed() {
@@ -218,11 +227,14 @@ public class SessionsView extends ViewPart {
 
   private void switchToSelection() {
     SessionInfo session = selectedSession();
-    if (session == null || reportIfUnavailable()) {
+    if (session == null || reportIfUnavailable() || !CopilotSessions.switchTo(session)) {
       return;
     }
-    CopilotSessions.switchTo(session);
-    refreshAsync();
+    // The chat view loads the conversation asynchronously, so mark the new session as current
+    // right away and reconcile once the load has had a chance to finish.
+    activeSessionId = session.getId();
+    viewer.refresh();
+    display.timerExec(RECONCILE_DELAY_MS, this::refreshIfAlive);
   }
 
   private void renameSelection() {

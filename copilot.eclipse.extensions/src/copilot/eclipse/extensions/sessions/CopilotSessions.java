@@ -54,6 +54,7 @@ public final class CopilotSessions {
       "com/microsoft/copilot/eclipse/CHAT/HIDE_CHAT_HISTORY";
 
   private static final String[] SESSION_CHANGE_TOPICS = {
+      TOPIC_CONVERSATION_SELECTED,
       TOPIC_CONVERSATION_TITLE_UPDATED,
       TOPIC_NEW_CONVERSATION,
       "com/microsoft/copilot/eclipse/CHAT/ON_SEND",
