@@ -19,19 +19,29 @@ Requires GitHub Copilot for Eclipse **0.19.0 or later**.
 
 ## Install
 
-1. Install [GitHub Copilot](https://marketplace.eclipse.org/content/github-copilot) in Eclipse.
-2. **Help → Install New Software…** and add this update site after you publish one, or install from a local build:
-   - Build: `./mvnw clean verify`
-   - Local site: `copilot.eclipse.extensions.repository/target/repository/`
+1. Install [GitHub Copilot](https://marketplace.eclipse.org/content/github-copilot) in Eclipse (0.19.0 or later).
+2. **Help → Install New Software…** and add the p2 update site:
+   ```
+   https://philipp0205.github.io/copilot-eclipse-extensions/
+   ```
+   The site is published from `main` via GitHub Pages (`Settings → Pages → GitHub Actions`).
 3. Select **Copilot Extensions** and complete installation.
 4. Restart Eclipse.
 5. Open **Window → Preferences → GitHub Copilot → Extensions**.
+
+To install from a local build instead:
+
+```shell
+./mvnw clean verify
+```
+
+Then add `copilot.eclipse.extensions.repository/target/repository/` as a local site, or use the zipped p2 repository `copilot.eclipse.extensions.repository/target/copilot-eclipse-extensions-1.0.0-SNAPSHOT.zip`.
 
 If Copilot prompts you to approve MCP servers from a contributing plugin, approve **Copilot Extensions**.
 
 ## Build
 
-Prerequisites: Java 17+, Maven 3.8+ (or the included `./mvnw`).
+Prerequisites: Java 21+, Maven 3.8+ (or the included `./mvnw`).
 
 ```shell
 ./mvnw clean verify
