@@ -17,6 +17,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITableFontProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableLayout;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
@@ -191,7 +192,14 @@ public class SessionsView extends ViewPart {
     List<SessionInfo> sessions =
         unavailableReason == null ? CopilotSessions.listSessions() : List.<SessionInfo>of();
     statusLabel.setText(unavailableReason == null ? describe(sessions.size()) : unavailableReason);
+
+    // Refreshing replaces the input, so keep the user's selection; SessionInfo compares by id.
+    int previouslySelected = sessions.indexOf(selectedSession());
     viewer.setInput(sessions.toArray(new SessionInfo[0]));
+    if (previouslySelected >= 0) {
+      viewer.setSelection(new StructuredSelection(sessions.get(previouslySelected)), true);
+    }
+
     updateActionState();
     statusLabel.getParent().layout();
   }
