@@ -30,11 +30,51 @@
 		</startup>
 	</extension>
 	<extension
+		point="org.eclipse.ui.views">
+		<view
+			id="copilot.eclipse.extensions.views.SessionsView"
+			name="%view.sessions.name"
+			class="copilot.eclipse.extensions.sessions.SessionsView"
+			category="com.microsoft.copilot.eclipse.chat"
+			restorable="true">
+		</view>
+	</extension>
+	<extension
 		point="org.eclipse.ui.commands">
 		<command
 			id="copilot.eclipse.extensions.commands.refreshMcp"
 			name="%command.refresh.name"
 			description="%command.refresh.tooltip">
+		</command>
+		<command
+			id="copilot.eclipse.extensions.commands.status"
+			name="%command.status.name"
+			description="%command.status.tooltip">
+		</command>
+		<command
+			id="copilot.eclipse.extensions.commands.openSessionsView"
+			name="%command.openSessionsView.name"
+			description="%command.openSessionsView.tooltip">
+		</command>
+		<command
+			id="copilot.eclipse.extensions.commands.newSession"
+			name="%command.newSession.name"
+			description="%command.newSession.tooltip">
+		</command>
+		<command
+			id="copilot.eclipse.extensions.commands.switchSession"
+			name="%command.switchSession.name"
+			description="%command.switchSession.tooltip">
+		</command>
+		<command
+			id="copilot.eclipse.extensions.commands.nextSession"
+			name="%command.nextSession.name"
+			description="%command.nextSession.tooltip">
+		</command>
+		<command
+			id="copilot.eclipse.extensions.commands.previousSession"
+			name="%command.previousSession.name"
+			description="%command.previousSession.tooltip">
 		</command>
 	</extension>
 	<extension
@@ -43,6 +83,51 @@
 			commandId="copilot.eclipse.extensions.commands.refreshMcp"
 			class="copilot.eclipse.extensions.RefreshMcpHandler">
 		</handler>
+		<handler
+			commandId="copilot.eclipse.extensions.commands.status"
+			class="copilot.eclipse.extensions.ExtensionsStatusHandler">
+		</handler>
+		<handler
+			commandId="copilot.eclipse.extensions.commands.openSessionsView"
+			class="copilot.eclipse.extensions.sessions.OpenSessionsViewHandler">
+		</handler>
+		<handler
+			commandId="copilot.eclipse.extensions.commands.newSession"
+			class="copilot.eclipse.extensions.sessions.NewSessionHandler">
+		</handler>
+		<handler
+			commandId="copilot.eclipse.extensions.commands.switchSession"
+			class="copilot.eclipse.extensions.sessions.SwitchSessionHandler">
+		</handler>
+		<handler
+			commandId="copilot.eclipse.extensions.commands.nextSession"
+			class="copilot.eclipse.extensions.sessions.CycleSessionHandler$Next">
+		</handler>
+		<handler
+			commandId="copilot.eclipse.extensions.commands.previousSession"
+			class="copilot.eclipse.extensions.sessions.CycleSessionHandler$Previous">
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.bindings">
+		<key
+			commandId="copilot.eclipse.extensions.commands.switchSession"
+			contextId="org.eclipse.ui.contexts.window"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M3+M">
+		</key>
+		<key
+			commandId="copilot.eclipse.extensions.commands.nextSession"
+			contextId="org.eclipse.ui.contexts.window"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M3+PAGE_DOWN">
+		</key>
+		<key
+			commandId="copilot.eclipse.extensions.commands.previousSession"
+			contextId="org.eclipse.ui.contexts.window"
+			schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+			sequence="M1+M3+PAGE_UP">
+		</key>
 	</extension>
 	<extension
 		point="org.eclipse.ui.menus">
@@ -52,8 +137,42 @@
 				id="copilot.eclipse.extensions.menu"
 				label="Copilot Extensions">
 				<command
+					commandId="copilot.eclipse.extensions.commands.openSessionsView"
+					label="%command.openSessionsView.name"
+					style="push">
+				</command>
+				<command
+					commandId="copilot.eclipse.extensions.commands.newSession"
+					label="%command.newSession.name"
+					style="push">
+				</command>
+				<command
+					commandId="copilot.eclipse.extensions.commands.switchSession"
+					label="%command.switchSession.name"
+					style="push">
+				</command>
+				<command
+					commandId="copilot.eclipse.extensions.commands.nextSession"
+					label="%command.nextSession.name"
+					style="push">
+				</command>
+				<command
+					commandId="copilot.eclipse.extensions.commands.previousSession"
+					label="%command.previousSession.name"
+					style="push">
+				</command>
+				<separator
+					name="copilot.eclipse.extensions.menu.mcpSeparator"
+					visible="true">
+				</separator>
+				<command
 					commandId="copilot.eclipse.extensions.commands.refreshMcp"
 					label="%command.refresh.name"
+					style="push">
+				</command>
+				<command
+					commandId="copilot.eclipse.extensions.commands.status"
+					label="%command.status.name"
 					style="push">
 				</command>
 			</menu>
